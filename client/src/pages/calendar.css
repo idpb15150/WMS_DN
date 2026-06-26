@@ -1,0 +1,58 @@
+
+/* ===== จัดตำแหน่งใน dayGridMonth ให้อยู่กลางช่องวัน ===== */
+.pill-center-wrapper {
+  display: flex;
+  justify-content: center;     /* กึ่งกลางแนวนอน */
+  align-items: center;          /* กึ่งกลางแนวตั้ง (ในพื้นที่ event ของ cell) */
+  width: 100%;
+  padding: 2px 0;
+}
+
+/* มุมมองอื่น ๆ ใช้ระยะมาตรฐาน */
+.pill-default-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2px 0;
+}
+
+/* ===== Pill สวยงามและ "ไม่ล้น" ===== */
+.calendar-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid;
+  border-radius: 3px;               /* โค้งสวย */
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  max-width: calc(100% - 8px);        /* ✅ จำกัดไม่ให้ทะลุออกนอก cell */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.calendar-pill .pill-time { font-weight: 600; font-size: 13px; }
+.calendar-pill .pill-dot  { color: #9aa4b2; }
+.calendar-pill .pill-title{ font-size: 13px; color: #344054; }
+
+.calendar-pill:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  transform: translateY(-1px);
+}
+
+/* ===== สีพื้นหลัง/ขอบ แบบ Tailwind utility ที่ถูกใช้ใน STATUS_META ===== */
+.bg-gradient-to-r.from-\[\#E6F4FF\].to-\[\#F0F7FF\] {
+  background: linear-gradient(90deg, #E6F4FF 0%, #F0F7FF 100%);
+}
+.bg-gradient-to-r.from-\[\#FFF7E6\].to-\[\#FFF9ED\] {
+  background: linear-gradient(90deg, #FFF7E6 0%, #FFF9ED 100%);
+}
+.border-\[\#1677FF33\] { border-color: rgba(22,119,255,0.2) !important; }
+.border-\[\#FAAD1433\] { border-color: rgba(250,173,20,0.2) !important; }
+
+/* ถ้าโปรเจกต์ไม่ได้ใช้ Tailwind: เพิ่มคลาสสถานะเฉพาะก็ได้
+.calendar-pill.scheduled  { background: linear-gradient(90deg, #E6F4FF 0%, #F0F7FF 100%); border-color: rgba(22,119,255,0.2); }
+.calendar-pill.in_progress{ background: linear-gradient(90deg, #FFF7E6 0%, #FFF9ED 100%); border-color: rgba(250,173,20,0.2); }
+*/
